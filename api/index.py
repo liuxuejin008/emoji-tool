@@ -17,15 +17,14 @@ def about():
 @app.route('/list',methods=['GET', 'POST'])
 def list():
     try:
-        fact_sheet_chair = request.args.get("q")
-        if fact_sheet_chair is None:
+        word = request.args.get("word")
+        if word is None:
             return jsonify({"message": "empty input","rcode":1})
         url = "https://api.together.xyz/v1/chat/completions"
         headers = {
             "Authorization": "Bearer 0c26a4544f9d3e83835161e853a79fc5f82c4ccb156a423f339af516ed11fe24",
             "Content-Type": "application/json"
         }
-        word = request.args.get("word")
         prompt = f"""
                    假设你是一个emoji专家，我输入文字，你整理概括输出相关的emoji并输出unicode,并至少输出5个相关emoji。
                    给定的文字: ```{word}```
