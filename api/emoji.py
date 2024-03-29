@@ -43,5 +43,18 @@ def handle_request(request):
         print(f"An error occurred: {e}")
     return json({"message": message,"rcode":0})
 
+
+@app.route('/test1')
+def test1(request):
+
+    return json({"rcode":1})
+
+@app.route('/test2')
+def test2(request):
+
+    return json({"rcode":2})
+
+
+
 #if __name__ == "__main__":
     #app.run(host="0.0.0.0", port=8088)
