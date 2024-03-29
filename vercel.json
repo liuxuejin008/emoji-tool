@@ -24,9 +24,8 @@
       "destination": "/index.html"
     },
     {
-      "source": "/api/(.*)",
-      "destination": "api/emoji.py"
+      "source": "/(.*)",
+      "destination": "/api/index"
     }
-
   ]
 }
