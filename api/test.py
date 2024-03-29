@@ -37,6 +37,9 @@ def handle_request(request):
             print(f"Request failed with status code: {response_1.status_code}")
             print(response_1.text)
 
+        return json({'message': message})
+
+
     except Exception as e:
         traceback.print_exc()
     # 发生异常时执行回滚操作
