@@ -3,7 +3,7 @@ import traceback
 from sanic import response, Sanic
 from sanic.response import json
 
-app = Sanic("emoji")
+app = Sanic()
 import requests
 @app.route('/generate')
 def handle_request(request):
