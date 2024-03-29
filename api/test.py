@@ -4,7 +4,6 @@ import requests
 from sanic import app, Sanic
 from sanic.response import json
 
-app = Sanic("test")
 @app.route('/test')
 def handle_request(request):
     try:
@@ -38,8 +37,6 @@ def handle_request(request):
             print(response_1.text)
 
         return json({'message': message})
-
-
     except Exception as e:
         traceback.print_exc()
     # 发生异常时执行回滚操作
