@@ -5,6 +5,16 @@ from sanic.response import json
 
 app = Sanic()
 import requests
+
+app = Sanic()
+
+
+@app.route('/')
+@app.route('/<path:path>')
+async def index(request, path=""):
+    return json({'hello': path})
+
+
 @app.route('/generate')
 def handle_request(request):
     try:
