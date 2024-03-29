@@ -1,11 +1,7 @@
 import traceback
 
 import requests
-from sanic import app
 from sanic.response import json
-
-
-@app.route('/test')
 def handle_request(request):
     try:
         fact_sheet_chair = request.args.get("q")
