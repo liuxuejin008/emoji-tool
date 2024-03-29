@@ -1,7 +1,7 @@
 import traceback
 
 import requests
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
@@ -14,8 +14,8 @@ def about():
     return 'About'
 
 
-@app.route('/list')
-def list(request):
+@app.route('/list',methods=['GET', 'POST'])
+def list():
     try:
         fact_sheet_chair = request.args.get("q")
         if fact_sheet_chair is None:
