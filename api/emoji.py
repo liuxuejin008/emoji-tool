@@ -7,18 +7,17 @@ app = Sanic()
 
 
 @app.route('/')
-@app.route('/<path:path>')
 async def index(request, path=""):
     print(path)
     return json({'hello': path})
 
 
 @app.route('/user')
-async def handle_request(request):
+async def user(request):
     return json({'hello': "1234546"})
 
 @app.route('/ann')
-async def handle_request(request):
+async def ann(request):
     return json({'hello': "123454678"})
 
 #if __name__ == "__main__":
