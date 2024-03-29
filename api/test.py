@@ -4,7 +4,7 @@ import requests
 from sanic import app, Sanic
 from sanic.response import json
 
-app = Sanic()
+app = Sanic("test")
 @app.route('/test')
 def handle_request(request):
     try:
