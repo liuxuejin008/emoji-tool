@@ -5,7 +5,7 @@ from sanic import app, Sanic
 from sanic.response import json
 
 @app.route('/test')
-def handle_request(request):
+async def handle_request(request):
     try:
         fact_sheet_chair = request.args.get("q")
         if fact_sheet_chair is None:
