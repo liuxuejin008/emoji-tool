@@ -15,7 +15,7 @@ def about():
 
 
 @app.route('/list')
-async def list(request):
+def list(request):
     try:
         fact_sheet_chair = request.args.get("q")
         if fact_sheet_chair is None:
