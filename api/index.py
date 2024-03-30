@@ -1,4 +1,5 @@
 import traceback
+from os.path import join
 
 import requests
 from flask import Flask, jsonify, request
@@ -11,6 +12,7 @@ def home():
 
 @app.route('/about')
 def about():
+    join(dir, '..', 'data', 'example.db')
     return 'About'
 
 
