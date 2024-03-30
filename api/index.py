@@ -35,18 +35,8 @@ def about():
     # 创建会话
     Session = sessionmaker(bind=engine)
     session = Session()
-    # 添加数据
-    new_user = User(name='Alice', age=30)
-    session.add(new_user)
 
 
-    # 添加数据
-    new_user = User(name='tom', age=33)
-    session.add(new_user)
-    # 添加数据
-    new_user = User(name='tom1', age=36)
-    session.add(new_user)
-    session.commit()
     # 查询数据
     users = session.query(User).all()
     for user in users:
