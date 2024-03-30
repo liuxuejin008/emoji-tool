@@ -1,5 +1,6 @@
 import traceback
-from os.path import join
+from os.path import dirname, abspath, join
+dir = dirname(abspath(__file__))
 
 import requests
 from flask import Flask, jsonify, request
