@@ -4,7 +4,6 @@ from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 dir = dirname(abspath(__file__))
-
 import requests
 from flask import Flask, jsonify, request
 
@@ -17,7 +16,6 @@ def home():
 @app.route('/about')
 def about():
     ll = join(dir, '..', 'data', 'example.db')
-
     # 创建 SQLite 数据库连接
     print('sqlite:///'+ll)
     engine = create_engine('sqlite:///'+ll, echo=True)
@@ -35,8 +33,6 @@ def about():
     # 创建会话
     Session = sessionmaker(bind=engine)
     session = Session()
-
-
     # 查询数据
     users = session.query(User).all()
     for user in users:
