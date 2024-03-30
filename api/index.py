@@ -1,5 +1,8 @@
 import traceback
 from os.path import dirname, abspath, join
+from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
 dir = dirname(abspath(__file__))
 
 import requests
@@ -13,7 +16,31 @@ def home():
 
 @app.route('/about')
 def about():
-    print(join(dir, '..', 'data', 'example.db'))
+    ll = join(dir, '..', 'data', 'example.db')
+
+    # 创建 SQLite 数据库连接
+    print('sqlite:///'+ll)
+    engine = create_engine('sqlite:///'+ll, echo=True)
+
+    # 创建基类
+    Base = declarative_base()
+
+    # 定义数据模型
+    class User(Base):
+        __tablename__ = 'users'
+
+        id = Column(Integer, primary_key=True)
+        name = Column(String)
+        age = Column(Integer)
+
+    # 创建会话
+    Session = sessionmaker(bind=engine)
+    session = Session()
+
+    # 查询数据
+    users = session.query(User).all()
+    for user in users:
+        print(user.name, user.age)
     return 'About'
 
 
