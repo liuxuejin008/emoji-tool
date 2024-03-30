@@ -13,7 +13,7 @@ def home():
 
 @app.route('/about')
 def about():
-    join(dir, '..', 'data', 'example.db')
+    print(join(dir, '..', 'data', 'example.db'))
     return 'About'
 
 
