@@ -28,8 +28,8 @@
       "destination": "/sad-face.html"
     },
     {
-      "source": "/nerd-face.html",
-      "destination": "/nerd-face.html"
+      "source": "/nerd-emoji.html",
+      "destination": "/nerd-emoji.html"
     },
     {
       "source": "/(.*)",
