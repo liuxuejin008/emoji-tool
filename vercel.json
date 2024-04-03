@@ -28,6 +28,10 @@
       "destination": "/sad-face.html"
     },
     {
+      "source": "/nerd-face.html",
+      "destination": "/nerd-face.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/api/index"
     }
