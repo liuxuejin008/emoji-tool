@@ -81,28 +81,28 @@ def list():
 
 #订单状态变更通知
 @app.route('/hotel.order.status.change.callback')
-def order(request):
+def order():
     data = request.get_json()
     print(data)
     return jsonify({'code': 0,"message":"成功"})
 
 #酒店信息变更通知
 @app.route('/hotel.poi.info.change.callback')
-def poi(request):
+def poi():
     data = request.get_json()
     print(data)
     return jsonify({'code': 0,"message":"成功"})
 
 #订单退款状态变更通知
 @app.route('/hotel.refund.status.change.callback')
-def refund(request):
+def refund():
     data = request.get_json()
     print(data)
     return jsonify({'code': 0,"message":"成功"})
 
 #产品信息变更通知
 @app.route('/hotel.product.info.change.callback')
-async def product(request):
+async def product():
     data = request.get_json()
     print(data)
     return jsonify({'code': 0,"message":"成功"})
