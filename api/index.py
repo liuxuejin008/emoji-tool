@@ -77,3 +77,24 @@ def list():
     # 发生异常时执行回滚操作
         print(f"An error occurred: {e}")
     return jsonify({"message": message,"rcode":0})
+
+
+
+@app.route('/hotel.order.status.change.callback')
+async def ann(request):
+    data = request.get_json()
+    print(data)
+    return jsonify({'code': 0,"message":"成功"})
+
+
+@app.route('/hotel.poi.info.change.callback')
+async def ann(request):
+    data = request.get_json()
+    print(data)
+    return jsonify({'code': 0,"message":"成功"})
+
+@app.route('/hotel.product.info.change.callback')
+async def ann(request):
+    data = request.get_json()
+    print(data)
+    return jsonify({'code': 0,"message":"成功"})

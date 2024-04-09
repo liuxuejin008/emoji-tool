@@ -20,5 +20,26 @@ async def user(request):
 async def ann(request):
     return json({'hello': "123454678"})
 
+
+@app.route('/hotel.order.status.change.callback')
+async def ann(request):
+    data = request.get_json()
+    print(data)
+    return json({'code': 0,"message":"成功"})
+
+
+@app.route('/hotel.poi.info.change.callback')
+async def ann(request):
+    data = request.get_json()
+    print(data)
+    return json({'code': 0,"message":"成功"})
+
+@app.route('/hotel.product.info.change.callback')
+async def ann(request):
+    data = request.get_json()
+    print(data)
+    return json({'code': 0,"message":"成功"})
+
+
 #if __name__ == "__main__":
     #app.run(host="0.0.0.0", port=8088)
