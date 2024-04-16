@@ -5,7 +5,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 dir = dirname(abspath(__file__))
 import requests
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
@@ -93,6 +93,11 @@ def poi():
     print(data)
     return jsonify({'code': 0,"message":"成功"})
 
+
+@app.route('/result')
+def result():
+   dict = {'phy':50,'che':60,'maths':70}
+   return render_template('result.html', result = dict)
 #订单退款状态变更通知
 @app.route('/hotel.refund.status.change.callback')
 def refund():
