@@ -94,7 +94,7 @@ def poi():
     return jsonify({'code': 0,"message":"成功"})
 
 
-@app.route('/result')
+@app.route('/result.html')
 def result():
    dict = {'phy':50,'che':60,'maths':70}
    return render_template('result.html', result = dict)
