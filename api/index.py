@@ -3,22 +3,26 @@ from os.path import dirname, abspath, join
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+
 dir = dirname(abspath(__file__))
 import requests
 from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
 app.config['JSON_AS_ASCII'] = False
+
+
 @app.route('/')
 def home():
     return 'Hello, World!'
+
 
 @app.route('/about')
 def about():
     ll = join(dir, '..', 'data', 'example.db')
     # 创建 SQLite 数据库连接
-    print('sqlite:///'+ll)
-    engine = create_engine('sqlite:///'+ll, echo=True)
+    print('sqlite:///' + ll)
+    engine = create_engine('sqlite:///' + ll, echo=True)
 
     # 创建基类
     Base = declarative_base()
@@ -40,12 +44,12 @@ def about():
     return 'About'
 
 
-@app.route('/list',methods=['GET', 'POST'])
+@app.route('/list', methods=['GET', 'POST'])
 def list():
     try:
         word = request.args.get("word")
         if word is None:
-            return jsonify({"message": "empty input","rcode":1})
+            return jsonify({"message": "empty input", "rcode": 1})
         url = "https://api.together.xyz/v1/chat/completions"
         headers = {
             "Authorization": "Bearer 0c26a4544f9d3e83835161e853a79fc5f82c4ccb156a423f339af516ed11fe24",
@@ -74,40 +78,44 @@ def list():
         return jsonify({'message': message})
     except Exception as e:
         traceback.print_exc()
-    # 发生异常时执行回滚操作
+        # 发生异常时执行回滚操作
         print(f"An error occurred: {e}")
-    return jsonify({"message": message,"rcode":0})
+    return jsonify({"message": message, "rcode": 0})
 
 
-#订单状态变更通知
+# 订单状态变更通知
 @app.route('/hotel.order.status.change.callback')
 def order():
     data = request.get_json()
     print(data)
-    return jsonify({'code': 0,"message":"成功"})
+    return jsonify({'code': 0, "message": "成功"})
 
-#酒店信息变更通知
+
+# 酒店信息变更通知
 @app.route('/hotel.poi.info.change.callback')
 def poi():
     data = request.get_json()
     print(data)
-    return jsonify({'code': 0,"message":"成功"})
+    return jsonify({'code': 0, "message": "成功"})
 
 
 @app.route('/result.html')
 def result():
-   dict = {'phy':50,'che':60,'maths':70}
-   return render_template('result.html', result = dict)
-#订单退款状态变更通知
+    dict = {'phy': 50, 'che': 60, 'maths': 70}
+    return render_template('result.html', result=dict)
+
+
+# 订单退款状态变更通知
 @app.route('/hotel.refund.status.change.callback')
 def refund():
     data = request.get_json()
     print(data)
-    return jsonify({'code': 0,"message":"成功"})
+    return jsonify({'code': 0, "message": "成功"})
 
-#产品信息变更通知
+
+# 产品信息变更通知
 @app.route('/hotel.product.info.change.callback')
 async def product():
     data = request.get_json()
     print(data)
-    return jsonify({'code': 0,"message":"成功"})
+    return jsonify({'code': 0, "message": "成功"})
